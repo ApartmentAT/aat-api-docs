@@ -1,5 +1,3 @@
-# Errors
-
 ### 400 Bad request
 
 The request is malformed. Please refer to the relevant section of the 

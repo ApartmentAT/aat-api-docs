@@ -1,10 +1,10 @@
-# Availability
-
 ## Update availability
 
 The Client has to call this method every time the availability of an 
 apartment changes, including every change received via the booking 
 webhooks or the booking list request.
+
+The apartment cannot be booked on apartment.at if no availability data is present.
 
 ### Endpoint
 ```

@@ -1,4 +1,4 @@
-# Price management
+## Description
 
 Send the new prices to apartment.at whenever a price change occurs in the Client. 
 Apartment.at does not send any changes back to the Client.

@@ -1,8 +1,7 @@
-# Booking functions
-
 ## List of bookings
 
-After receiving and pairing the apartments, the Client should request the list of the existing booking for each apartment.
+After receiving and pairing the apartments, the Client should request 
+the list of the existing bookings for each apartment.
 
 ### Endpoint
 ```
@@ -15,9 +14,9 @@ GET /api/bookings/{apartment_number}
 
 Field | Type | Description
 ------|------|------------
-apartment_number | integer | ID of the booking entity on apartment.at
+apartment_number | integer | ID of the apartment entity on apartment.at
 booking_number | string | ID of the booking entity on apartment.at
-status | string | The status of the booking (`"open"`, `"finished"`, `"cancelled"`)
+status | string | The status of the booking (`"open"`, `"finished"` or `"cancelled"`)
 arrival | string | The day of the check-in in `YYYY-MM-DD` format
 departure | string | The day of the check-out in `YYYY-MM-DD` format
 first_name | string | First name of the guest
@@ -29,10 +28,9 @@ language | string | The preferred language of the guest (`"de"` or `"en"`)
 adults_number | integer | Number of adults
 children_number | integer | Number of children
 infant_number | integer | Number of infants
-booking_type | string | Type of the booking (`"inquiry"`, `"instant"`, or `"booking_on_request"`)
+booking_type | string | Type of the booking (`"inquiry"`, `"instant"` or `"booking_on_request"`)
 price_paid | number | The amount of the price the guest already paid (can be decimal)
 price_remaining | number | The amount of the price the guest has to pay on location (can be decimal)
-currency | string | The currency of the payment, defaults to `"EUR"`
 
 ```json
 [
@@ -55,8 +53,7 @@ currency | string | The currency of the payment, defaults to `"EUR"`
         "infant_number": 0,
         "booking_type": "inquiry",
         "price_paid": 400,
-        "price_remaining": 100,
-        "currency": "EUR"
+        "price_remaining": 100
     }
 ]
 ```
@@ -139,9 +136,9 @@ GET /api/booking/{booking_number}
 
 Field | Type | Description
 ------|------|------------
-apartment_number | integer | ID of the booking entity on apartment.at
+apartment_number | integer | ID of the apartment entity on apartment.at
 booking_number | string | ID of the booking entity on apartment.at
-status | string | The status of the booking (`"open"`, `"finished"`, `"cancelled"`)
+status | string | The status of the booking (`"open"`, `"finished"` or `"cancelled"`)
 arrival | string | The day of the check-in in `YYYY-MM-DD` format
 departure | string | The day of the check-out in `YYYY-MM-DD` format
 first_name | string | First name of the guest
@@ -153,9 +150,9 @@ language | string | The preferred language of the guest (`"de"` or `"en"`)
 adults_number | integer | Number of adults
 children_number | integer | Number of children
 infant_number | integer | Number of infants
-booking_type | string | Type of the booking (`"inquiry"`, `"instant"`, or `"booking_on_request"`)
-price_paid | double | The amount of the price the guest already paid
-price_remaining | double | The amount of the price the guest has to pay on location
+booking_type | string | Type of the booking (`"inquiry"`, `"instant"` or `"booking_on_request"`)
+price_paid | number | The amount of the price the guest already paid
+price_remaining | number | The amount of the price the guest has to pay on location
 
 ```json
 {

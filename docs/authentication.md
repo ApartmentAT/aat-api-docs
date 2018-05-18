@@ -1,6 +1,6 @@
-# Authentication
+## Description
 
-In order to connect to the API the Client have to request a client id, which is generated and 
+In order to connect to the API the Client have to request a client ID, which is generated and 
 sent manually. Our API uses OAuth2 with authorization codes. 
 The client application will redirect a user to our server where they will either approve or
  deny the request to issue an access token to the Client.
@@ -19,7 +19,7 @@ GET /oauth/authorize?client_id=123&redirect_uri=http://yourdomain.com/redirect_u
 - `redirect_uri` (required)
 - `response_type` (required) - `"code"`
 
-When receiving authorization requests, the system will display a page to the user allowing 
+When receiving authorization requests, the system will display a page to the user, allowing 
 them to approve or deny the authorization request. If they approve the request, they will be 
 redirected to the `redirect_uri` that was specified by the client application. 
 The `redirect_uri` must match the redirect URL that was specified when the client was created.

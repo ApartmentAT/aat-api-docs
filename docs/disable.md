@@ -1,4 +1,3 @@
-# Disabling the API
 
 If the host decides to disable the API, all current synchronizations 
 will stop. To enable it again, a new API key needs to be generated. 

@@ -9,4 +9,5 @@ pages:
   - Prices: prices.md
   - Disable the API: disable.md
   - Errors: errors.md
+  - Changelog: changelog.md
 theme: readthedocs
