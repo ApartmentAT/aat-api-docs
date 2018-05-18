@@ -1,4 +1,4 @@
-## Description
+# Description
 
 In order to connect to the API the Client have to request a client ID, which is generated and 
 sent manually. Our API uses OAuth2 with authorization codes. 

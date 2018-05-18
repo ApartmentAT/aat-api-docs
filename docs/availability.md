@@ -1,3 +1,5 @@
+# Availability
+
 ## Update availability
 
 The Client has to call this method every time the availability of an 

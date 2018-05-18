@@ -1,3 +1,5 @@
+# Apartments
+
 ## List of apartments
 
 The Client can retrieve all apartments that belong to the user. The linking of the apartments between the Client Application and the Resource Server can be implemented several ways. The users can input the corresponding IDs for each apartment or the Client Application can provide a GUI to pair them.

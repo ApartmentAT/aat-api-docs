@@ -1,3 +1,5 @@
+# Bookings
+
 ## List of bookings
 
 After receiving and pairing the apartments, the Client should request 
