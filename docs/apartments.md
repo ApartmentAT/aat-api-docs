@@ -22,7 +22,7 @@ stair | string | Stairway number *(optional)*
 floor | string | Floor number *(optional)*
 door | string | Door number *(optional)*
 
-```
+```json
 {   
     "apartments": [
         {
