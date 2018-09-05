@@ -1,3 +1,7 @@
+### 2018-09-05
+
+Added services to booking responses and structure changed
+
 ### 2018-06-06
 
 Added CTA/CTD
