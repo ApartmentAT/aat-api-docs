@@ -31,33 +31,113 @@ adults_number | integer | Number of adults
 children_number | integer | Number of children
 infant_number | integer | Number of infants
 booking_type | string | Type of the booking (`"inquiry"`, `"instant"` or `"booking_on_request"`)
-price_paid | number | The amount of the price the guest already paid (can be decimal)
-price_remaining | number | The amount of the price the guest has to pay on location (can be decimal)
+paid | number | The amount of the price the guest already paid (can be decimal)
+remaining | number | The amount of the price the guest has to pay on location (can be decimal)
+
+#### Services
+There are 3 types of services: inclusive, compulsory and optional. All three service types are sent with 
+each response, regardless if they contain any services or not.
+
+Field | Type | Description
+------|------|------------
+name | string | Name of the service
+price | number | Price of the service, `null` if the service is inclusive
+frequency | string | The frequency of charging for the service (`"one_off"`, `"per_person"`, `"per_night"`, `"per_person_per_night"`, `"per_booked_unit"` or `"per_booked_unit_per_night"`)
+quantity | integer | The amount of the service the price is being applied to
+total | number | The price multiplied by the amount of the service, not available if the service is inclusive
 
 ```json
-[
+
+{
+  "bookings": [
     {
-        "apartment_number": 123456,
-        "booking_number": "ABC12345678",
-        "status": "open",
-        "arrival": "2018-01-01",
-        "departure": "2018-01-10",
-        "guest": {
-            "first_name": "First",
-            "last_name": "Last",
-            "nationality": "british",
-            "email": "test@test.com",
-            "phone": "+4312345678",
-            "language": "en"
-        },
-        "adults_number": 4,
-        "children_number": 0,
-        "infant_number": 0,
-        "booking_type": "inquiry",
-        "price_paid": 400,
-        "price_remaining": 100
+      "apartment_number": 123456,
+      "booking_number": "ABC12345678",
+      "status": "open",
+      "arrival": "2018-01-01",
+      "departure": "2018-01-10",
+      "guest": {
+          "first_name": "First",
+          "last_name": "Last",
+          "nationality": "british",
+          "email": "test@test.com",
+          "phone": "+4312345678",
+          "language": "en"
+      },
+      "adults": 4,
+      "children": 0,
+      "infants": 0,
+      "booking_type": "inquiry",
+      "prices": {
+          "services": 
+              {
+                "inclusive": [
+                  {
+                    "name": "Internet (WiFi)",
+                    "price": null,
+                    "frequency": "per_night",
+                    "quantity": 1
+                  },
+                  {
+                    "name": "Final cleaning",
+                    "price": null,
+                    "frequency": "one_off",
+                    "quantity": 1
+                  },
+                  {
+                    "name": "Towels",
+                    "price": null,
+                    "frequency": "per_person",
+                    "quantity": 1
+                  },
+                  {
+                    "name": "Bed linen",
+                    "price": null,
+                    "frequency": "per_person",
+                    "quantity": 1
+                  }
+                ],
+                "compulsory": [
+                  {
+                    "name": "Local tax",
+                    "price": 7.7,
+                    "frequency": "one_off",
+                    "quantity": 1,
+                    "total": 7.7
+                  }
+                ],
+                "optional": [
+                  {
+                    "name": "Garage",
+                    "price": 30,
+                    "frequency": "per_booked_unit_per_night",
+                    "quantity": 1,
+                    "total": 30
+                  },
+                  {
+                    "name": "Baby Bed",
+                    "price": 10,
+                    "frequency": "per_night",
+                    "quantity": 1,
+                    "total": 10
+                  },
+                  {
+                    "name": "Animals",
+                    "price": 10,
+                    "frequency": "per_night",
+                    "quantity": 2,
+                    "total": 20
+                  }
+                ]
+              }
+          ,
+          "paid": 400,
+          "remaining": 100
+      }
     }
-]
+  ]
+}
+
 ```
 
 ## New booking
@@ -123,7 +203,7 @@ booking_number | string | ID of the booking entity on apartment.at
 
 ### Response 204
 
-## Get booking
+## Get single booking
 
 Get all data from a specific booking.
 
@@ -153,8 +233,20 @@ adults_number | integer | Number of adults
 children_number | integer | Number of children
 infant_number | integer | Number of infants
 booking_type | string | Type of the booking (`"inquiry"`, `"instant"` or `"booking_on_request"`)
-price_paid | number | The amount of the price the guest already paid
-price_remaining | number | The amount of the price the guest has to pay on location
+paid | number | The amount of the price the guest already paid
+remaining | number | The amount of the price the guest has to pay on location
+
+#### Services
+There are 3 types of services: inclusive, compulsory and optional. All three service types are sent with 
+each response, regardless if they contain any services or not.
+
+Field | Type | Description
+------|------|------------
+name | string | Name of the service
+price | number | Price of the service, `null` if the service is inclusive
+frequency | string | The frequency of charging for the service (`"one_off"`, `"per_person"`, `"per_night"`, `"per_person_per_night"`, `"per_booked_unit"` or `"per_booked_unit_per_night"`)
+quantity | integer | The amount of the service the price is being applied to
+total | number | The price multiplied by the amount of the service, not available if the service is inclusive
 
 ```json
 {
@@ -176,8 +268,72 @@ price_remaining | number | The amount of the price the guest has to pay on locat
         "children_number": 0,
         "infant_number": 0,
         "booking_type": "inquiry",
-        "price_paid": 400,
-        "price_remaining": 100
+        "prices": {
+            "services": 
+                {
+                  "inclusive": [
+                    {
+                      "name": "Internet (WiFi)",
+                      "price": null,
+                      "frequency": "per_night",
+                      "quantity": 1
+                    },
+                    {
+                      "name": "Final cleaning",
+                      "price": null,
+                      "frequency": "one_off",
+                      "quantity": 1
+                    },
+                    {
+                      "name": "Towels",
+                      "price": null,
+                      "frequency": "per_person",
+                      "quantity": 1
+                    },
+                    {
+                      "name": "Bed linen",
+                      "price": null,
+                      "frequency": "per_person",
+                      "quantity": 1
+                    }
+                  ],
+                  "compulsory": [
+                    {
+                      "name": "Local tax",
+                      "price": 7.7,
+                      "frequency": "one_off",
+                      "quantity": 1,
+                      "total": 7.7
+                    }
+                  ],
+                  "optional": [
+                    {
+                      "name": "Garage",
+                      "price": 30,
+                      "frequency": "per_booked_unit_per_night",
+                      "quantity": 1,
+                      "total": 30
+                    },
+                    {
+                      "name": "Baby Bed",
+                      "price": 10,
+                      "frequency": "per_night",
+                      "quantity": 1,
+                      "total": 10
+                    },
+                    {
+                      "name": "Animals",
+                      "price": 10,
+                      "frequency": "per_night",
+                      "quantity": 2,
+                      "total": 20
+                    }
+                  ]
+                }
+            ,
+            "paid": 400,
+            "remaining": 100
+        }
     }
 }
 ```
