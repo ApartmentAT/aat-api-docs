@@ -1,11 +1,13 @@
 # Description
 
-In order to connect to the API the Client have to request a client ID, which is generated and 
+In order to connect to the API the Client has to request a client ID and client secret, which is generated and 
 sent manually. Our API uses OAuth2 with authorization codes. 
-The client application will redirect a user to our server where they will either approve or
+The client application will redirect the user to our server where they will either approve or
  deny the request to issue an access token to the Client.
 
 The base URL used for every request: [https://apartment.at/](https://apartment.at/)
+
+The base URL used for testing will be sent along with the API credentials.
 
 ## Obtaining authorization code
 
@@ -18,6 +20,7 @@ GET /oauth/authorize?client_id=123&redirect_uri=http://yourdomain.com/redirect_u
 - `client_id` (required)
 - `redirect_uri` (required)
 - `response_type` (required) - `"code"`
+- `state` (optional) - data that can be used for verification or other purposes by the Client
 
 When receiving authorization requests, the system will display a page to the user, allowing 
 them to approve or deny the authorization request. If they approve the request, they will be 
@@ -31,7 +34,7 @@ GET response_uri?code=1ba04115153b2dc3ef6f94108d3f7cf3f22b838d24ce6f3152a790e291
 
 ## Converting Authorization Codes To Access Tokens
 
-If the user approves the authorization request, they will be redirected back to the client 
+After approving the authorization request, the user will be redirected to the client 
 application. The Client should then issue a POST request to the application to request an 
 access token. The request should include the authorization code that was issued when the user 
 approved the authorization request. 
@@ -41,11 +44,11 @@ approved the authorization request.
 POST /oauth/token
 ```
 
-### Parameters
-- `client_id` (required)
-- `client_secret` (required)
+### Request data
+- `client_id` (required) -  the manually provided client ID
+- `client_secret` (required) - the manually provided client secret
 - `grant_type` (required) - `"authorization_code"`
-- `redirect_uri` (required)
+- `redirect_uri` (required) - must match the redirect URL that was specified when the client was created.
 - `code` (required) - the authorization code from the previous request
 
 ### Response 200 (application/json)

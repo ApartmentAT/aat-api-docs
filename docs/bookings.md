@@ -155,7 +155,7 @@ about the failed synchronization. The same applies to booking update notificatio
 
 Field | Type | Description
 ------|------|------------
-timestamp | string | The date and time of the request in full ISO 8601 format
+timestamp | string | The date and time of the request in full ISO 8601 format (UTC)
 event | string | The type of the event (`"new"`)
 apartment_number | integer | ID of the apartment entity on apartment.at
 booking_number | string | ID of the booking entity on apartment.at
@@ -185,7 +185,7 @@ The Client will receive all booking data, not just the updated values.
 
 Field | Type | Description
 ------|------|------------
-timestamp | string | The date and time of the request in full ISO 8601 format
+timestamp | string | The date and time of the request in full ISO 8601 format (UTC)
 event | string | The type of the event (`"update"`)
 apartment_number | integer | ID of the apartment entity on apartment.at
 booking_number | string | ID of the booking entity on apartment.at

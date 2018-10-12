@@ -1,6 +1,6 @@
 ### 2018-09-05
 
-Added services to booking responses and structure changed
+Added services to booking responses and changed structure
 
 ### 2018-06-06
 
