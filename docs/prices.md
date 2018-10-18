@@ -3,7 +3,7 @@
 Send the new prices to apartment.at whenever a price change occurs in the Client. 
 Apartment.at does not send any changes back to the Client.
 
-## Update prices
+## Update prices based on the number of guests
 
 ### Endpoint
 ```
@@ -43,6 +43,50 @@ currency | string | The currency the prices are in | At the moment only `"EUR"` 
                     "amount": 150
                 }
             ],
+            "currency": "EUR"
+        }
+    ]
+}
+```
+
+### Response 204
+
+## Update prices based on a base price
+
+### Endpoint
+```
+PUT /api/prices/base/{apartment_number}
+```
+
+### Parameters
+- `apartment_number` (integer, required)
+
+### Request PUT
+
+Field | Type | Description | Rules
+------|------|-------------|------
+date | string | The day the prices are referring to | required, `YYYY-MM-DD` format
+minimum_stay | integer | The minimum number of days the apartment has to be booked for | required, minimum amount `1`, maximum amount `100`
+amount | integer | The price of the apartment | required, minimum amount `1`, maximum amount `1000`
+surcharge | integer | The amount of surcharge applied after each additional guest | minimum amount `1`, maximum amount `1000` *(optional)*
+persons | integer | The number of persons the price is referring to | required only if the `surcharge` is set, minimum amount `0`, maximum amount `50`. If `0`, the `surcharge` will apply to the entire apartment  *(conditional)*
+currency | string | The currency the prices are in | At the moment only `"EUR"` is supported *(optional)*
+
+```json
+{
+    "prices": [
+        {
+            "date": "2018-01-01",
+            "minimum_stay": 3,
+            "amount": 150,
+            "currency": "EUR"
+        },
+        {
+            "date": "2018-01-02",
+            "minimum_stay": 3,
+            "amount": 120,
+            "surcharge": 50,
+            "persons": 2,
             "currency": "EUR"
         }
     ]

@@ -44,7 +44,7 @@ approved the authorization request.
 POST /oauth/token
 ```
 
-### Request data
+### Request POST
 - `client_id` (required) -  the manually provided client ID
 - `client_secret` (required) - the manually provided client secret
 - `grant_type` (required) - `"authorization_code"`
