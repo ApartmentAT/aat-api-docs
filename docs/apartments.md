@@ -24,6 +24,9 @@ door | string | Door number *(optional)*
 
 ```json
 {   
+    "user": {
+        "email": "lorem@ipsum.com"
+    },
     "apartments": [
         {
             "apartment_number": 123456,

@@ -87,3 +87,21 @@ GET /api/ping
     "status": "OK"
 }
 ```
+
+## User data
+
+Information about the apartment.at user associated with the access token.
+
+### Endpoint
+```
+GET /api/user-data
+```
+
+### Response 200 (application/json)
+```json
+{
+    "user": {
+        "email": "lorem@ipsum.com"
+    }
+}
+```
