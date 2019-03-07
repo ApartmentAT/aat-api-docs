@@ -16,9 +16,9 @@ GET /api/prices
 Field | Type | Description
 ------|------|-------------
 minimum_stay | integer | The minimum number of days the apartment has to be booked for
-person | integer | The number of persons the prices are referring to
-price | integer | The price of the apartment for the specified amount of guests
 currency | string | The currency the prices are in
+person | integer | The number of persons the prices are referring to
+amount | integer | The price of the apartment for the specified amount of guests
 
 ```json
 {
@@ -149,9 +149,9 @@ GET /api/prices/{apartment_number}
 Field | Type | Description
 ------|------|-------------
 minimum_stay | integer | The minimum number of days the apartment has to be booked for
-person | integer | The number of persons the prices are referring to
-price | integer | The price of the apartment for the specified amount of guests
 currency | string | The currency the prices are in
+person | integer | The number of persons the prices are referring to
+amount | integer | The price of the apartment for the specified amount of guests
 
 ```json
 {
