@@ -1,3 +1,7 @@
+### 2019-03-07
+
+Added: get the rates of one or more apartments
+
 ### 2018-10-18
 
 Added the functionality to update prices with base prices and surcharges

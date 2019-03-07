@@ -1,7 +1,216 @@
 # Description
 
-Send the new prices to apartment.at whenever a price change occurs in the Client. 
+Get the current rates or send new ones to apartment.at whenever a price change occurs in the Client. 
 Apartment.at does not send any changes back to the Client.
+
+## Get the rates of every apartment
+Retrieve the rates of all the apartments belonging to the user for the next 2 years.
+
+### Endpoint
+```
+GET /api/prices
+```
+
+### Response 200 (application/json)
+
+Field | Type | Description
+------|------|-------------
+minimum_stay | integer | The minimum number of days the apartment has to be booked for
+person | integer | The number of persons the prices are referring to
+price | integer | The price of the apartment for the specified amount of guests
+currency | string | The currency the prices are in
+
+```json
+{
+    "123456": {
+        "2019-03-07": {
+            "minimum_stay": 3,
+            "currency": "EUR",
+            "rates": [
+                {
+                    "person": 1,
+                    "amount": 100
+                },
+                {
+                    "person": 2,
+                    "amount": 100
+                },
+                {
+                    "person": 3,
+                    "amount": 100
+                },
+                {
+                    "person": 4,
+                    "amount": 90
+                },
+                {
+                    "person": 5,
+                    "amount": 80
+                }
+            ]
+        },
+        "2019-03-08": {
+            "minimum_stay": 2,
+            "currency": "EUR",
+            "rates": [
+                {
+                    "person": 1,
+                    "amount": 300
+                },
+                {
+                    "person": 2,
+                    "amount": 300
+                },
+                {
+                    "person": 3,
+                    "amount": 300
+                },
+                {
+                    "person": 4,
+                    "amount": 290
+                },
+                {
+                    "person": 5,
+                    "amount": 280
+                }
+            ]
+        }
+    },
+    "234567": {
+        "2019-03-07": {
+            "minimum_stay": 1,
+            "currency": "EUR",
+            "rates": [
+                {
+                    "person": 1,
+                    "amount": 110
+                },
+                {
+                    "person": 2,
+                    "amount": 110
+                },
+                {
+                    "person": 3,
+                    "amount": 110
+                },
+                {
+                    "person": 4,
+                    "amount": 100
+                },
+                {
+                    "person": 5,
+                    "amount": 90
+                }
+            ]
+        },
+        "2019-03-08": {
+            "minimum_stay": 3,
+            "currency": "EUR",
+            "rates": [
+                {
+                    "person": 1,
+                    "amount": 300
+                },
+                {
+                    "person": 2,
+                    "amount": 300
+                },
+                {
+                    "person": 3,
+                    "amount": 300
+                },
+                {
+                    "person": 4,
+                    "amount": 290
+                },
+                {
+                    "person": 5,
+                    "amount": 280
+                }
+            ]
+        }
+    }
+}
+```
+
+## Get the rates of a single apartment
+Retrieve the rates of an apartment for the next 2 years.
+
+### Endpoint
+```
+GET /api/prices/{apartment_number}
+```
+
+### Parameters
+- `apartment_number` (integer, required)
+
+### Response 200 (application/json)
+
+Field | Type | Description
+------|------|-------------
+minimum_stay | integer | The minimum number of days the apartment has to be booked for
+person | integer | The number of persons the prices are referring to
+price | integer | The price of the apartment for the specified amount of guests
+currency | string | The currency the prices are in
+
+```json
+{
+    "123456": {
+        "2019-03-07": {
+            "minimum_stay": 3,
+            "currency": "EUR",
+            "rates": [
+                {
+                    "person": 1,
+                    "amount": 100
+                },
+                {
+                    "person": 2,
+                    "amount": 100
+                },
+                {
+                    "person": 3,
+                    "amount": 100
+                },
+                {
+                    "person": 4,
+                    "amount": 90
+                },
+                {
+                    "person": 5,
+                    "amount": 80
+                }
+            ]
+        },
+        "2019-03-08": {
+            "minimum_stay": 2,
+            "currency": "EUR",
+            "rates": [
+                {
+                    "person": 1,
+                    "amount": 300
+                },
+                {
+                    "person": 2,
+                    "amount": 300
+                },
+                {
+                    "person": 3,
+                    "amount": 300
+                },
+                {
+                    "person": 4,
+                    "amount": 290
+                },
+                {
+                    "person": 5,
+                    "amount": 280
+                }
+            ]
+        }
+    }
+}
+```
 
 ## Update prices based on the number of guests
 
