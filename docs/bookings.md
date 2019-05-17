@@ -145,7 +145,7 @@ total | number | The price multiplied by the amount of the service, not availabl
 When a new booking is created, apartment.at will send a notification to the Client 
 if a callback URL was provided with the subscription. 
 
-To receive booking data, the Client needs to call [Get booking](#get-booking).
+To receive booking data, the Client needs to call [Get booking](#get-single-booking).
 
 In case of an error, the notification will be sent again in 3 minute intervals up to **three times** until the proper 
 status code is returned. After that, apartment.at will notify the host 
@@ -177,7 +177,7 @@ booking_number | string | ID of the booking entity on apartment.at
 
 When a change happens to a booking on apartment.at, a notification will be sent to the Client.
 
-To receive booking data, the Client needs to call [Get booking](#get-booking). 
+To receive booking data, the Client needs to call [Get booking](#get-single-booking). 
 
 The Client will receive all booking data, not just the updated values.
 

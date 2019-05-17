@@ -72,6 +72,31 @@ Accept: application/json
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUo0Gw (...)
 ```
 
+## Refreshing The Access Token
+
+Apartment.at issues long-lived access tokens, but they can be renewed regularly if needed.
+
+### Endpoint
+```
+POST /oauth/token
+```
+
+### Request POST
+- `client_id` (required) -  the manually provided client ID
+- `client_secret` (required) - the manually provided client secret
+- `grant_type` (required) - `"refresh_token"`
+- `refresh_token` (required) - the refresh token received along with the access token after [converting the authorization code](#converting-authorization-codes-to-access-tokens)
+
+### Response 200 (application/json)
+```json
+{
+    "token_type": "Bearer",
+    "expires_in": 31535998,
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUo0Gw (...)",
+    "refresh_token": "def502001c929775e9cdba9d5d8cebedc5 (...)"
+}
+```
+
 ## Testing the connection
 
 The ping method requests the API to indicate to the Client that it is online and functioning as expected.
