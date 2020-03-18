@@ -1,3 +1,7 @@
+### 2019-03-18
+
+Added commission field to bookings
+
 ### 2019-03-07
 
 Added: get the rates of one or more apartments
