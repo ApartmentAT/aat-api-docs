@@ -33,6 +33,7 @@ infant_number | integer | Number of infants
 booking_type | string | Type of the booking (`"inquiry"`, `"instant"` or `"booking_on_request"`)
 paid | number | The amount of the price the guest already paid (can be decimal)
 remaining | number | The amount of the price the guest has to pay on location (can be decimal)
+commission | number | The amount of commission
 
 #### Services
 There are 3 types of services: inclusive, compulsory and optional. All three service types are sent with 
@@ -235,6 +236,7 @@ infant_number | integer | Number of infants
 booking_type | string | Type of the booking (`"inquiry"`, `"instant"` or `"booking_on_request"`)
 paid | number | The amount of the price the guest already paid
 remaining | number | The amount of the price the guest has to pay on location
+commission | number | The amount of commission
 
 #### Services
 There are 3 types of services: inclusive, compulsory and optional. All three service types are sent with 
