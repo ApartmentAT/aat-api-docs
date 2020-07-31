@@ -5,7 +5,7 @@ sent manually. Our API uses OAuth2 with authorization codes.
 The client application will redirect the user to our server where they will either approve or
  deny the request to issue an access token to the Client.
 
-The base URL used for every request: [https://www.apartment.at/](https://apartment.at/)
+The base URL used for every request: [https://www.apartment.at](https://apartment.at)
 
 The base URL used for testing will be sent along with the API credentials.
 
